@@ -23,9 +23,9 @@ export const calculateExpression = () => {
 export const Operators = () => (
   <section className="buttons--operators">
     {["+", "-", "*", "/"].map((op, i) => (
-      <Button key={i} text={op} clickHandler={this.opHandler} />
+      <Button key={i} text={op} clickHandler={opHandler} />
     ))}
-    <Button text="=" clickHandler={this.calculateExpression} />
+    <Button text="=" clickHandler={calculateExpression} />
   </section>
 );
 

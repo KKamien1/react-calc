@@ -1,42 +1,13 @@
-import React, { Component } from "react";
-import ee from "../eventEmitter";
+import React from "react";
 
-class Display extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { text: this.props.text || "0" };
-    this.updateDisplay = this.updateDisplay.bind(this);
-    this.onClickHandler = this.onClickHandler.bind(this);
-  }
-
-  updateDisplay(newStr) {
-    return this.setState({
-      text: newStr
-        .toString()
-        .split(" ")
-        .reverse()
-        .join(" ")
-    });
-  }
-
-  componentWillMount() {
-    ee.addListener("displayUpdate", this.updateDisplay);
-  }
-
-  onClickHandler() {
-    if (this.props.clickHandler) {
-      this.props.clickHandler.call(this);
-    }
-  }
-
-  render() {
-    return (
-      <div className="display" onClick={this.onClickHandler}>
-        {this.state.text}
-      </div>
-    );
-  }
-}
+export const Display = ({ text = 0, clickHandler }) => (
+  <div className="display" onClick={clickHandler ? clickHandler : null}>
+    {text
+      .toString()
+      .split(" ")
+      .reverse()
+      .join(" ")}
+  </div>
+);
 
 export default Display;
